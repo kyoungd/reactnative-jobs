@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View } from 'react-native'
-import { Text } from 'react-native-elements';
+import { Text } from 'native-base';
 import ContentLandingPage from '../components/ContentLandingPage';
 
 class LandingPage extends Component {

@@ -2,6 +2,8 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { createAppContainer, createBottomTabNavigator, createStackNavigator } from 'react-navigation';
 import { Provider } from 'react-redux';
+import { Font } from 'expo';
+import { Ionicons } from '@expo/vector-icons';
 
 import store from './src/store';
 import JobBoardPage from './src/screen/JobBoardPage';
@@ -29,6 +31,14 @@ const MainNavigator = createBottomTabNavigator({
 const AppContainer = createAppContainer(MainNavigator);
  
 class App extends React.Component {
+  // Later on in your component
+  async componentDidMount() {
+    await Font.loadAsync({
+      'Roboto': require('native-base/Fonts/Roboto.ttf'),
+      'Roboto_medium': require('native-base/Fonts/Roboto_medium.ttf'),
+      ...Ionicons.font,
+    });
+  }
   render() {
     return (
       <Provider store={store}>

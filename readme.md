@@ -9,7 +9,7 @@ emulator -avd Nexus_S_API_28
 npm start
 
 # install default styling for React Native.  Kind of like material-ui.
-npm install react-native-elements
+npm install native-base
 # redux
 npm install redux react-redux redux-thunk
 # navigation
