@@ -10,6 +10,7 @@ import LoginPage from './src/screen/LoginPage';
 import MessagePage from './src/screen/MessagePage';
 import OfferListPage from './src/screen/OfferListPage';
 import RegisterTalentPage from './src/screen/RegisterTalentPage';
+import MainPage from './src/screen/MainPage';
 
 const MainNavigator = createBottomTabNavigator({
   home: { screen: LandingPage },
@@ -17,6 +18,7 @@ const MainNavigator = createBottomTabNavigator({
   register: { screen: RegisterTalentPage },
   talent: {
     screen: createBottomTabNavigator({
+      main: { screen: MainPage },
       jobs: { screen: JobBoardPage },
       offers: { screen: OfferListPage },
       messages: { screen: MessagePage }

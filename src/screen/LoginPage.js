@@ -1,19 +1,14 @@
 import React, { Component } from 'react';
 import { View } from 'react-native'
 import { Text } from 'react-native-elements';
+import MyLogin from '../components/MyLogin';
 
 class LoginPage extends Component {
   render() {
     return (
-      <View>
-        <Text>LoginPage</Text>
-        <Text>LoginPage</Text>
-        <Text>LoginPage</Text>
-        <Text>LoginPage</Text>
-        <Text>LoginPage</Text>
-        <Text>LoginPage</Text>
-        <Text>LoginPage</Text>
-      </View>
+      <React.Fragment>
+        <MyLogin />
+      </React.Fragment>
     )
   }
 }

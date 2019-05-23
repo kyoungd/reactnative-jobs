@@ -22,9 +22,6 @@ export default class Horizontal extends Component {
         style={styles.container}
         ref={component => this._scrollView = component}
       >
-        <View style={[styles.outer, styles.green]}>
-          <Text style={styles.innerText}>LOGIN</Text>
-        </View>
         <View style={styles.outer}>
           <Text style={styles.innerText}>LANDING PAGE (default page) </Text>
         </View>
