@@ -17,7 +17,7 @@ export default class MyLogin extends Component {
             style={styles.logo}
             source={require('./images/lcologo.png')}
           />
-          <Text style={styles.title}>A simple login App</Text>
+          <Text style={styles.title}>Change the world</Text>
         </View>
         <View style={styles.myform}>
           <Myform />
@@ -39,7 +39,6 @@ export default class MyLogin extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: '#282830',
     width: Dimensions.get('window').width,
   },

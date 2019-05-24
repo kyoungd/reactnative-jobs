@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { createAppContainer, createBottomTabNavigator, createStackNavigator } from 'react-navigation';
 import { Provider } from 'react-redux';
-import { Font } from 'expo';
+import { AppLoading, Font } from 'expo';
 import { Ionicons } from '@expo/vector-icons';
 
 import store from './src/store';
@@ -31,15 +31,26 @@ const MainNavigator = createBottomTabNavigator({
 const AppContainer = createAppContainer(MainNavigator);
  
 class App extends React.Component {
-  // Later on in your component
+  constructor() {
+    super();
+    this.state = {
+      isReady: false
+    };
+  }
+
   async componentDidMount() {
     await Font.loadAsync({
       'Roboto': require('native-base/Fonts/Roboto.ttf'),
       'Roboto_medium': require('native-base/Fonts/Roboto_medium.ttf'),
-      ...Ionicons.font,
+      ...Ionicons.font
     });
+    this.setState({isReady: true});
   }
+  
   render() {
+    if (!this.state.isReady) {
+      return <AppLoading />
+    };
     return (
       <Provider store={store}>
         <AppContainer />
@@ -48,8 +59,7 @@ class App extends React.Component {
   }
 }
  
-
-export default AppContainer;
+export default App;
 
 const styles = StyleSheet.create({
   container: {

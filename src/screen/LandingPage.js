@@ -8,10 +8,6 @@ class LandingPage extends Component {
     return (
       <View>
         <ContentLandingPage />
-        <Text>LandingPage</Text>
-        <Text>LandingPage</Text>
-        <Text>LandingPage</Text>
-        <Text>LandingPage</Text>
       </View>
     )
   }
