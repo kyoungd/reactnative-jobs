@@ -7,40 +7,34 @@ import {
 } from 'react-native';
 import Myform from './Myform';
 
+import SigninForm from './SigninForm';
+import SignupForm from './SignupForm';
+
 export default class MyLogin extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: "",
+      password: "",
+      name: "",
+      register: false
+    };
+  }
+
   render() {
     return (
-      <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
-
-        <View style={styles.logocontainer}>
-          <Image 
-            style={styles.logo}
-            source={require('./images/lcologo.png')}
-          />
-          <Text style={styles.title}>Change the world</Text>
-        </View>
-        <View style={styles.myform}>
-          <Myform />
-        </View>
-      </KeyboardAvoidingView>
+      <View style={styles.container}>
+        { this.state.register ? <SignupForm /> : <SigninForm /> }
+      </View>
     );
   }
 }
 
-/*
-      <View>
-        <Image 
-          style={styles.logo}
-          source={require('./images/lcologo.png')}
-        />
-        <Text style={styles.title}>A simple login App</Text>
-      </View>
-*/
-
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#282830',
+    backgroundColor: '#fff',
     width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
   },
   logocontainer: {
     flexGrow: 1,

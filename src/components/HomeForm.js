@@ -3,63 +3,61 @@ import { StyleSheet, Text, View, Image } from "react-native";
 import { Button } from "native-base";
 import * as firebase from "firebase";
 
-export default class HomeForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: "",
-      email: ""
-    };
-  }
+signOutUser = () => {
+  firebase
+    .auth()
+    .signOut()
+    .then(() => {
+      console.log("Sign out");
+    })
+    .catch(error => alert(error.message));
+};
 
-  componentDidMount() {
-    firebase.auth().onAuthStateChanged(authenticate => {
-      if (authenticate) {
-        this.setState({
-          email: authenticate.email,
-          name: authenticate.displayName
-        });
-      } else {
-        this.props.navigation.replace("SignIn");
-      }
-    });
-  }
+export default function() {
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     name: "",
+  //     email: ""
+  //   };
+  // }
 
-  signOutUser = () => {
-    firebase
-      .auth()
-      .signOut()
-      .then(() => {
-        console.log("Sign out");
-      })
-      .catch(error => alert(error.message));
-  };
+  // componentDidMount() {
+  //   firebase.auth().onAuthStateChanged(authenticate => {
+  //     if (authenticate) {
+  //       this.setState({
+  //         email: authenticate.email,
+  //         name: authenticate.displayName
+  //       });
+  //     } else {
+  //       this.props.navigation.replace("SignIn");
+  //     }
+  //   });
+  // }
 
-  render() {
-    return (
-      <View style={styles.container}>
-        <View style={styles.logoContainer}>
-          <Image source={require("../../assets/logo.png")} />
-          <Text>LearnCodeOnline.in</Text>
-        </View>
-        <View style={styles.userDetails}>
-          <Text> Hey {this.state.name}</Text>
-          <Text>You are signed in as: {this.state.email}</Text>
-        </View>
-        <Button
-          style={styles.button}
-          full
-          rounded
-          success
-          onPress={() => {
-            this.signOutUser();
-          }}
-        >
-          <Text style={styles.buttonText}>SignOut</Text>
-        </Button>
+  return (
+    <View style={styles.container}>
+      <View style={styles.logoContainer}>
+        <Image source={require("../../assets/logo.png")} />
+        <Text>LearnCodeOnline.in</Text>
       </View>
-    );
-  }
+      <View style={styles.userDetails}>
+        <Text> Hey {this.state.name}</Text>
+        <Text>You are signed in as: {this.state.email}</Text>
+      </View>
+      <Button
+        style={styles.button}
+        full
+        rounded
+        success
+        onPress={() => {
+          this.signOutUser();
+        }}
+      >
+        <Text style={styles.buttonText}>SignOut</Text>
+      </Button>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
